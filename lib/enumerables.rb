@@ -4,6 +4,7 @@ module Enumerable
 		for i in (0...self.length)
 			yield(self[i])
 		end
+		self
 	end
 
 	def my_each_with_index
@@ -80,10 +81,6 @@ module Enumerable
 
 end
 
-def multiply_els(numbers)
-	numbers.my_inject(:*)
-end
-
-answer = multiply_els([2,4,5])
-
-puts answer
+# def multiply_els(numbers)
+# 	numbers.my_inject(:*)
+# end
