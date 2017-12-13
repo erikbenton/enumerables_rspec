@@ -1,15 +1,24 @@
 module Enumerable
 
 	def my_each
-		for i in (0...self.length)
-			yield(self[i])
+		if block_given?
+			for i in (0...self.length)
+				yield(self[i])
+			end
+			return self
+		else
+			return self.to_enum(:my_each)
 		end
-		self
 	end
 
 	def my_each_with_index
-		for i in (0...self.length)
-			yield(self[i], i)
+		if block_given?
+			for i in (0...self.length)
+				yield(self[i], i)
+			end
+			return self
+		else
+			return self.to_enum(:my_each_with_index)
 		end
 	end
 
@@ -18,7 +27,7 @@ module Enumerable
 		for i in (0...self.length)
 			result.push(self[i]) if yield(self[i])
 		end
-		result
+		return result
 	end
 
 	def my_all?
