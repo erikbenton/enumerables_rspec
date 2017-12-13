@@ -27,6 +27,7 @@ module Enumerable
 		for i in (0...self.length)
 			result.push(self[i]) if yield(self[i])
 		end
+		return false if result.length == 0
 		return result
 	end
 
